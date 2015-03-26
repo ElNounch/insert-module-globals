@@ -1,4 +1,5 @@
 var test = require('tap').test;
+var path = require('path');
 var vm = require('vm');
 var concat = require('concat-stream');
 
@@ -36,7 +37,7 @@ test('insert globals', function (t) {
 test('__filename and __dirname', function (t) {
     t.plan(2);
     
-    var file = __dirname + '/global/filename.js';
+    var file = path.join( __dirname, '/global/filename.js' );
     var deps = mdeps({ transform: inserter });
     var pack = bpack({ raw: true });
     

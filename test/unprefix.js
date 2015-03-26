@@ -1,4 +1,5 @@
 var test = require('tap').test;
+var path = require('path');
 var vm = require('vm');
 var concat = require('concat-stream');
 
@@ -9,7 +10,7 @@ var mdeps = require('module-deps');
 test('unprefix - remove shebang and bom', function (t) {
     t.plan(3);
     
-    var file = __dirname + '/unprefix/main.js';
+    var file = path.join( __dirname, '/unprefix/main.js' );
     var deps = mdeps({ transform: inserter });
     var pack = bpack({ raw: true });
     
